@@ -5,6 +5,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 ENV LANG=C.UTF-8
 ENV LC_ALL=C.UTF-8
 ENV LANGUAGE=C.UTF-8
+ENV OA_VERSION=3.9.4
 
 # Install additional packages required for OpenAudible
 RUN apt-get update && apt-get install -y \
@@ -25,7 +26,7 @@ RUN update-alternatives --set x-www-browser /usr/bin/firefox-esr && \
     update-alternatives --set gnome-www-browser /usr/bin/firefox-esr
 
 # Download and install OpenAudible
-RUN wget -q https://openaudible.org/latest/OpenAudible_x86_64.sh?beta=false -O openaudible_installer.sh && \
+RUN wget -q https://github.com/openaudible/openaudible/releases/download/v${OA_VERSION}/OpenAudible_${OA_VERSION}_x86_64.sh -O openaudible_installer.sh && \
     sh ./openaudible_installer.sh -q -overwrite -dir /usr/local/OpenAudible && \
     rm openaudible_installer.sh
 
