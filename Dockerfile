@@ -1,11 +1,14 @@
 FROM ghcr.io/linuxserver/baseimage-kasmvnc:debianbookworm
 
 # Set environment variables
+LABEL maintainer="jolentes"
+ENV TITLE=OpenAudible
+ENV OA_VERSION=3.9.4
+
 ENV DEBIAN_FRONTEND=noninteractive
 ENV LANG=C.UTF-8
 ENV LC_ALL=C.UTF-8
 ENV LANGUAGE=C.UTF-8
-ENV OA_VERSION=3.9.4
 
 # Install additional packages required for OpenAudible
 RUN apt-get update && apt-get install -y \
